@@ -1,4 +1,4 @@
-/* ================= ELLA — Ek Özellikler JS (React uygulamasına dokunmaz) ================= */
+﻿/* ================= ELLA — Ek Özellikler JS (React uygulamasına dokunmaz) ================= */
 (function () {
   "use strict";
 
@@ -194,3 +194,4 @@
     setupColorPicker();
   });
 })();
+

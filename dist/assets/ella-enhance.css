@@ -178,3 +178,15 @@ img { cursor: zoom-in; }
 }
 #ella-color-reset:hover { background: rgba(255,255,255,.1); }
 
+
+/* --- Fiyat ve WhatsApp Butonlarini Kesin Gizle --- */
+a[href*="wa.me"],
+a[href*="whatsapp"],
+a[href*="api.whatsapp"],
+button[class*="whatsapp"],
+[class*="whatsapp"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

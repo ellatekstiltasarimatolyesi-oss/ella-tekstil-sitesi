@@ -190,6 +190,57 @@
 
   ready(function () {
 
+  /* Ust menuye Randevu Olustur butonu ve Iletisim yanina Avatar + Randevu karti ekle */
+  function setupRandevuUI() {
+    if (!document.getElementById("ella-nav-randevu")) {
+      var navLinks = document.querySelectorAll("header a, nav a");
+      var targetLink = null;
+      navLinks.forEach(function (a) {
+        if ((a.textContent || "").trim().toLocaleLowerCase("tr-TR") === "iletişim") targetLink = a;
+      });
+      if (targetLink && targetLink.parentNode) {
+        var rBtn = document.createElement("a");
+        rBtn.id = "ella-nav-randevu";
+        rBtn.href = "/randevu.html";
+        rBtn.textContent = "📅 Randevu Oluştur";
+        rBtn.style.cssText = "margin-left:14px;padding:8px 15px;border-radius:999px;background:linear-gradient(135deg,#C9A227,#E5C158);color:#111;font-weight:700;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(201,162,39,.35);";
+        targetLink.insertAdjacentElement("afterend", rBtn);
+      }
+    }
+
+    if (!document.getElementById("ella-contact-randevu-card")) {
+      var contactSec = null;
+      document.querySelectorAll("section").forEach(function (el) {
+        var t = (el.textContent || "").toLocaleLowerCase("tr-TR");
+        if (!contactSec && t.indexOf("bizimle iletişime geç") !== -1 && t.indexOf("+90 555 095 30 30") !== -1) {
+          contactSec = el;
+        }
+      });
+      var card = document.createElement("div");
+      card.id = "ella-contact-randevu-card";
+      card.style.cssText = "max-width:1100px;margin:28px auto 12px;padding:24px 28px;border-radius:20px;border:1px solid rgba(201,162,39,.45);background:linear-gradient(135deg,rgba(201,162,39,.10),rgba(123,47,247,.06));display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;font-family:Manrope,sans-serif;";
+      card.innerHTML =
+        '<div style="display:flex;align-items:center;gap:18px;flex:1;min-width:260px;">' +
+          '<img src="/ella-avatar.png" onerror="this.src=\'/avatar-gorseli.png\'" alt="Ella Tekstil Tasarım Atölyesi" data-no-lightbox="1" style="width:76px;height:76px;border-radius:50%;object-fit:cover;border:2px solid #C9A227;box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:default;" />' +
+          '<div>' +
+            '<div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C9A227;font-weight:700;">ONLİNE GÖRÜŞME & İMALAT PLANLAMA</div>' +
+            '<h3 style="font-family:Playfair Display,serif;font-size:21px;margin:4px 0 6px;">Ben Ella · 30 Dakikalık Google Meet Toplantısı</h3>' +
+            '<p style="font-size:13.5px;opacity:.85;margin:0;line-height:1.5;">Tekstil tasarım ve imalat yaptırmak istediğiniz tüm projeler için takvimden uygun gün ve saati seçerek hemen online randevu oluşturabilirsiniz.</p>' +
+          '</div>' +
+        '</div>' +
+        '<a href="/randevu.html" style="padding:13px 24px;border-radius:12px;background:linear-gradient(135deg,#C9A227,#E5C158);color:#111;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 18px rgba(201,162,39,.35);">📅 Randevu Oluştur ↗</a>';
+
+      if (contactSec && contactSec.parentNode) {
+        contactSec.parentNode.insertBefore(card, contactSec.nextSibling);
+      } else {
+        var net = document.getElementById("ella-network-section");
+        if (net && net.parentNode) net.parentNode.insertBefore(card, net);
+      }
+    }
+  }
+    setupRandevuUI();
+    setInterval(setupRandevuUI, 1000);
+
   /* Sitedeki tum e-ticaret, sepet, IBAN, giris, siparis ve fiyat kalintilarini tek seferde temizle/donustur */
   setInterval(function () {
     var textMap = {
@@ -284,6 +335,7 @@
     setupColorPicker();
   });
 })();
+
 
 
 

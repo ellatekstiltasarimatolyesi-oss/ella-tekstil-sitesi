@@ -190,6 +190,33 @@
 
   ready(function () {
 
+  /* 5 Adimli Siparis Kartlarini 5 Adimli Kurumsal Uretim Surecine Donustur */
+  setInterval(function () {
+    var map = {
+      "5 adımda siparişin hazır": "5 Adımda Kurumsal Üretim Süreci",
+      "kolay, hızlı ve güvenli sipariş süreci. ödeme dekontunu yükle, whatsapp'tan onayla.": "Bilgisayarlı kalıp çiziminden numune ve seri üretime kadar uçtan uca profesyonel atölye süreci.",
+      "tasarımını seç": "Model & Kalıp Çıkarma",
+      "ürün kategorisini seç, beğendiğin tasarıma tıkla ya da kendi görselini hazırla.": "Bilgisayarlı çizim sistemiyle en düşük fire ve hassas ölçümle model kalıbı hazırlanır.",
+      "sepete ekle": "Kumaş & Baskı Seçimi",
+      "boyut, renk ve adet seçimini yap, sepete ekle.": "Penye, dokuma ve denim seçenekleriyle DTF veya süblimasyon baskı tekniği belirlenir.",
+      "iban'a öde": "Numune Üretimi",
+      "gösterilen iban numarasına havale/eft yapın, dekontunu yükleyin.": "Kesim ve dikim sonrası onayınız için birebir ölçülerde ürün numunesi hazırlanır.",
+      "whatsapp'tan onayla": "Paket & Seri Üretim",
+      "otomatik yönlendirme ile sipariş detayların whatsapp'a gönderilir.": "Kumaş tedarikli veya minimum 50 adet paket programla kurumsal ve butik üretim yapılır.",
+      "kargoya hazırlanır": "Kalite Kontrol & Teslimat",
+      "ödeme onaylandıktan sonra 24 saat içinde ürününüz kargoya verilir.": "Detaylı kalite kontrol, ütü ve paketleme sonrası ürünleriniz güvenle teslim edilir."
+    };
+    document.querySelectorAll("h1, h2, h3, h4, p, span, div").forEach(function (el) {
+      if (el.children.length === 0) {
+        var raw = (el.textContent || "").trim();
+        var low = raw.toLocaleLowerCase("tr-TR");
+        if (map[low] && raw !== map[low]) {
+          el.textContent = map[low];
+        }
+      }
+    });
+  }, 400);
+
   /* Kartlardaki Fiyat icin WA ve Sepete Ekle alanlarini tamamen kaldir */
   setInterval(function () {
     document.querySelectorAll('a, button, span, p, div').forEach(function (el) {
@@ -210,6 +237,7 @@
     setupColorPicker();
   });
 })();
+
 
 
 

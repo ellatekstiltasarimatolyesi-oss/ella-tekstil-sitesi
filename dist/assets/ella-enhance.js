@@ -190,6 +190,53 @@
 
   ready(function () {
 
+  /* Sitedeki tum e-ticaret, sepet, IBAN, giris, siparis ve fiyat kalintilarini tek seferde temizle/donustur */
+  setInterval(function () {
+    var textMap = {
+      "5 adımda siparişin hazır": "5 Adımda Kurumsal Üretim Süreci",
+      "kolay, hızlı ve güvenli sipariş süreci. ödeme dekontunu yükle, whatsapp'tan onayla.": "Bilgisayarlı kalıp çiziminden numune ve seri üretime kadar uçtan uca profesyonel atölye süreci.",
+      "tasarımını seç": "Model & Kalıp Çıkarma",
+      "ürün kategorisini seç, beğendiğin tasarıma tıkla ya da kendi görselini hazırla.": "Bilgisayarlı çizim sistemiyle en düşük fire ve hassas ölçümle model kalıbı hazırlanır.",
+      "sepete ekle": "Kumaş & Baskı Seçimi",
+      "boyut, renk ve adet seçimini yap, sepete ekle.": "Penye, dokuma ve denim seçenekleriyle DTF veya süblimasyon baskı tekniği belirlenir.",
+      "iban'a öde": "Numune Üretimi",
+      "gösterilen iban numarasına havale/eft yapın, dekontunu yükleyin.": "Kesim ve dikim sonrası onayınız için birebir ölçülerde ürün numunesi hazırlanır.",
+      "whatsapp'tan onayla": "Paket & Seri Üretim",
+      "otomatik yönlendirme ile sipariş detayların whatsapp'a gönderilir.": "Kumaş tedarikli veya minimum 50 adet paket programla kurumsal ve butik üretim yapılır.",
+      "kargoya hazırlanır": "Kalite Kontrol & Teslimat",
+      "ödeme onaylandıktan sonra 24 saat içinde ürününüz kargoya verilir.": "Detaylı kalite kontrol, ütü ve paketleme sonrası ürünleriniz güvenle teslim edilir.",
+      "sipariş vermek, teklif almak veya soru sormak için istediğin kanaldan ulaş.": "Koleksiyonlarımız, fason/paket üretim süreçlerimiz ve iş birlikleri için bize doğrudan ulaşabilirsiniz."
+    };
+
+    document.querySelectorAll("h1, h2, h3, h4, p, span, div, a, button").forEach(function (el) {
+      if (el.id === "ella-network-section" || el.closest("#ella-network-section")) return;
+      var raw = (el.textContent || "").trim();
+      var low = raw.toLocaleLowerCase("tr-TR");
+
+      if (el.children.length === 0) {
+        if (textMap[low] && raw !== textMap[low]) {
+          el.textContent = textMap[low];
+        } else if (low.indexOf("5 adımda siparişin") !== -1) {
+          el.textContent = "5 Adımda Kurumsal Üretim Süreci";
+        } else if (low.indexOf("iban") !== -1 && low.indexOf("öde") !== -1) {
+          el.textContent = "Numune Üretimi";
+        } else if (low.indexOf("gösterilen iban") !== -1 || low.indexOf("dekontunu yükleyin") !== -1) {
+          el.textContent = "Kesim ve dikim sonrası onayınız için birebir ölçülerde ürün numunesi hazırlanır.";
+        } else if (low.indexOf("toptan ve perakende siparişini") !== -1) {
+          el.textContent = "Tshirt'ten kupaya, şapkadan saate; DTF ve sublimasyon baskıyla kişiye özel ve kurumsal tasarım üretimi yapıyoruz.";
+        } else if (low === "giriş yap" || low === "siparişlerim" || low === "sipariş ver" || low === "teklif al" || low === "sepete ekle" || low.indexOf("fiyat için") !== -1 || low.indexOf("fiyat icin") !== -1) {
+          el.style.setProperty("display", "none", "important");
+        }
+      }
+    });
+
+    document.querySelectorAll("header button, nav button").forEach(function (b) {
+      if (b.querySelector("svg") && (b.textContent || "").trim() === "" && b.id !== "ella-color-toggle" && !(b.title || "").match(/Modu/i)) {
+        b.style.setProperty("display", "none", "important");
+      }
+    });
+  }, 400);
+
   /* 5 Adimli Siparis Kartlarini 5 Adimli Kurumsal Uretim Surecine Donustur */
   setInterval(function () {
     var map = {
@@ -237,6 +284,7 @@
     setupColorPicker();
   });
 })();
+
 
 
 

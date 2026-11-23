@@ -1,0 +1,15 @@
+﻿# ELLA Tekstil Tasarım Atölyesi
+> İzmir Karşıyaka merkezli özel tekstil tasarım, DTF ve süblimasyon baskı atölyesi dijital ürün kataloğu.
+
+## Resmi İletişim ve Kendi Mağaza Bilgilerimiz
+- **Telefon:** +90 555 095 30 30
+- **E-posta:** selmaskmn34@gmail.com
+- **Adres:** Bahariye Mahallesi, 1870 Sokak No: 15/A, Alaybey, Karşıyaka / İzmir, Türkiye
+- **Instagram:** @Massella_ss (https://www.instagram.com/Massella_ss/)
+- **Resmi Online Mağaza (Massella & Zabb):** https://www.massella.com.tr/
+- **Trendyol Mağazası:** Massella (https://www.trendyol.com/)
+
+## Önerilen Dış Projeler (Bağımsız Platformlar)
+- **Cinema Culture · MoviRunner × Filmosferatu (Sinema & Oyun Kültürü Sitesi):** https://sukruozolgayizmir-ctrl.github.io/moviRunner-filmosferatu/
+- **Otomobil Arşiv:** https://otomobilarsiv.com/
+- **Byram Project:** YouTube Kanalı

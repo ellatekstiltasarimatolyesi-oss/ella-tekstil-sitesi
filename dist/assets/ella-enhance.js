@@ -189,10 +189,27 @@
   }
 
   ready(function () {
+
+  /* Kartlardaki Fiyat icin WA ve Sepete Ekle alanlarini tamamen kaldir */
+  setInterval(function () {
+    document.querySelectorAll('a, button, span, p, div').forEach(function (el) {
+      if (el.id === 'ella-network-section' || el.closest('#ella-network-section')) return;
+      var t = (el.textContent || '').trim().toLocaleLowerCase('tr-TR');
+      if (el.children.length <= 2 && t.length > 0 && t.length < 40) {
+        if (t.indexOf('fiyat için') !== -1 || t.indexOf('fiyat icin') !== -1 || t.indexOf('sepete ekle') !== -1 || t.indexOf('whatsapp') !== -1 || t.indexOf('fiyat al') !== -1) {
+          el.style.setProperty('display', 'none', 'important');
+          if (el.parentElement && el.parentElement.children.length <= 2 && (el.parentElement.textContent || '').trim().length < 50) {
+            el.parentElement.style.setProperty('display', 'none', 'important');
+          }
+        }
+      }
+    });
+  }, 400);
     setupClickAnimations();
     setupLightbox();
     setupColorPicker();
   });
 })();
+
 
 
